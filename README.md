@@ -15,5 +15,5 @@ This test consists of frontend and backend folder. Backend using Python Flask AP
 1. Install vue-cli
 2. Open command prompt
 3. Navigate to frontend folder
-4. Run ```npm install```
+4. Run ```npm install``` to install node_modules
 5. Run ```npm run serve```
