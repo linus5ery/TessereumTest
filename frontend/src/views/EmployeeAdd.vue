@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Add Employee</h2>
-    <form @submit.prevent="addEmployee" class="form">
+    <form @submit.prevent="addEmployee" class="form" style="margin-bottom: 10px;">
       <div class="form-group">
         <label>Name:</label>
         <input v-model="employee.name" type="text" required />
@@ -25,6 +25,7 @@
         <button type="submit" class="submit-button">Add Employee</button>
       </div>
     </form>
+    <a class="link" href="/">Back to home</a>
   </div>
 </template>
 
