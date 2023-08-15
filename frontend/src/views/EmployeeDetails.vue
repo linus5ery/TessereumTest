@@ -9,6 +9,10 @@
     <div style="margin-bottom: 10px;">
       <form @submit.prevent="update" class="form">
         <div class="form-group">
+          <label>ID:</label>
+          <input v-model="employee.id" type="text" disabled />
+        </div>
+        <div class="form-group">
           <label>Name:</label>
           <input v-model="employee.name" type="text" required />
         </div>
