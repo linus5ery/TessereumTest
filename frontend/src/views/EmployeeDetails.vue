@@ -2,7 +2,7 @@
   <div>
     <aside style="margin-bottom: 10px;">
       <button class="button_custom" style="margin-right: 5px;" @click="toggleActivation">
-        {{ employee.activated ? "Deactivate" : "Activate" }}
+        {{ employee.activated == "1" ? "Deactivate" : "Activate" }}
       </button>
       <button class="button_custom" @click="deleteEmployee">Delete</button>
     </aside>
@@ -23,8 +23,8 @@
         <div class="form-group">
           <label>Activated:</label>
           <select v-model="employee.activated">
-            <option value=true>Active</option>
-            <option value=false>Not Active</option>
+            <option value="1">Active</option>
+            <option value="0">Not Active</option>
           </select>
         </div>
         <div>
@@ -50,6 +50,7 @@ export default {
     axios.get(`http://localhost:5001/employee/${id}`)
       .then(response => {
         this.employee = response.data;
+        this.employee.activated = String(this.employee.activated);
       })
       .catch(error => {
         console.error(`There was an error fetching details for employee ${id}:`, error);
@@ -62,13 +63,14 @@ export default {
   },
   methods: {
     toggleActivation() {
-      this.employee.activated = !this.employee.activated;
+      this.employee.activated = this.employee.activated == "1" ? "0" : "1";
+      console.log(this.employee.activated)
       axios.put(`http://localhost:5001/employee/${this.employee.id}`, {
-        activated: this.employee.activated
+        activated: Number(this.employee.activated),
       })
       .then(() => {
         this.$emit('show-alert', {
-          message: 'Success updating the activation status for employee: ' + Boolean(this.employee.activated),
+          message: 'Success updating the activation status for employee',
           type: 'success'
         });
       })
@@ -83,9 +85,10 @@ export default {
     update() {
       // Handle the logic to update the employee's info
       axios.put(`http://localhost:5001/employee/${this.employee.id}`, {
-        activated: this.employee.activated,
+        activated: Number(this.employee.activated),
         name: this.employee.name,
         email: this.employee.email,
+        address: this.employee.address,
       })
       .then(() => {
         this.$emit('show-alert', {

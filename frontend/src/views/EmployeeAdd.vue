@@ -17,8 +17,8 @@
       <div class="form-group">
         <label>Activated:</label>
         <select v-model="employee.activated">
-          <option value=true>Active</option>
-          <option value=false>Not Active</option>
+          <option value="1">Active</option>
+          <option value="0">Not Active</option>
         </select>
       </div>
       <div>
@@ -39,7 +39,7 @@ export default {
         name: "",
         email: "",
         address: "",
-        activated: true
+        activated: "1"
       }
     };
   },
