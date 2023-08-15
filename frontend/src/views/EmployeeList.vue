@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table>
+    <table class="striped-table" style="margin-bottom: 10px;">
       <thead>
         <tr>
           <th>ID</th>
@@ -16,10 +16,11 @@
           <td>{{ employee.name }}</td>
           <td>{{ employee.email }}</td>
           <td>{{ employee.activated ? "Yes" : "No" }}</td>
-          <td><button @click="viewDetails(employee.id)">Details</button></td>
+          <td><button class="button_custom" @click="viewDetails(employee.id)">Details</button></td>
         </tr>
       </tbody>
     </table>
+    <a class="link" href="/employee/add">Add employee</a>
   </div>
 </template>
 
@@ -48,3 +49,25 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.striped-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid lightslategray;
+}
+
+.striped-table th {
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 8px;
+}
+
+.striped-table td {
+  padding: 8px;
+}
+
+.striped-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+</style>

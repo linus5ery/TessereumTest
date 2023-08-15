@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EmployeeList from './../views/EmployeeList.vue'
 import EmployeeDetails from './../views/EmployeeDetails.vue'
+import EmployeeAdd from './../views/EmployeeAdd.vue'
 
 const routes = [
   { path: '/', name: 'EmployeeList', component: EmployeeList },
-  { path: '/employees/:id', name: 'EmployeeDetails', component: EmployeeDetails }
+  { path: '/employee/:id', name: 'EmployeeDetails', component: EmployeeDetails },
+  { path: '/employee/add', name: 'EmployeeAdd', component: EmployeeAdd },
 ]
 
 const router = createRouter({
